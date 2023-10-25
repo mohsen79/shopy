@@ -1,0 +1,3 @@
+1-instll redux with it's configuration with typescript
+2-install tailwind
+3-install swr(fetching data) , formik(forms) , yup(authenticating)
