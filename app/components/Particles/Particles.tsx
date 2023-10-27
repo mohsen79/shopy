@@ -65,7 +65,7 @@ const App = ({ color, count }: Props) => {
                         color: "#ffffff",
                         distance: 100,
                         enable: true,
-                        opacity: 0.5,
+                        opacity: 0.8,
                         width: 3,
                     },
                     move: {
