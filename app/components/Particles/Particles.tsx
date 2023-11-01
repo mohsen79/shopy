@@ -59,13 +59,13 @@ const App = ({ color, count }: Props) => {
                 },
                 particles: {
                     color: {
-                        value: "#ffffff",
+                        value: "#32a85e",
                     },
                     links: {
-                        color: "#ffffff",
+                        color: "#32a85e",
                         distance: 100,
                         enable: true,
-                        opacity: 0.8,
+                        opacity: 1,
                         width: 3,
                     },
                     move: {

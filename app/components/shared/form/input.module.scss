@@ -1,0 +1,27 @@
+.input {
+    margin: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    input {
+        width: 100%;
+        background-color: transparent;
+        padding: .5rem .3rem;
+        border: 1px solid white;
+        margin: auto;
+        outline: none;
+        color: white;
+        border-radius: 5px;
+         ::placeholder {
+            color: white;
+        }
+    }
+    label {
+        line-height: 1.7;
+        padding-left: .3rem;
+    }
+    input:focus {
+        border-color: #32a85e;
+    }
+}
