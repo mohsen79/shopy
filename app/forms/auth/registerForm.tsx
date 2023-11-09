@@ -1,35 +1,25 @@
-import Input from "@/app/components/shared/form/input";
-import { Form, FormikProps, withFormik } from "formik";
-
-interface RegisterFormValues {
-    name: string,
-    email: string,
-    password: string;
-}
-
-const InnerRegisterForm = (props: FormikProps<RegisterFormValues>) => {
-    return (
-        <Form action="">
-            <Input name="name" type="text" label="name" />
-            <Input name="email" type="email" label="email" />
-            <Input name="password" type="password" label="password" />
-            <button type="submit">register</button>
-        </Form>
-    );
-}
+import InnerRegisterForm from "@/app/components/auth/innerRegisterForm";
+import { RegisterFormValuesInterface } from "@/app/contracts/auth";
+import { withFormik } from "formik";
+import * as yup from "yup";
 
 interface RegisterFormProps {
     name?: string,
 }
 
-const RegisterForm = withFormik<RegisterFormProps, RegisterFormValues>({
-    mapPropsToValues: props => {
-        return {
-            name: props.name ?? "",
-            email: '',
-            password: ''
-        }
-    },
+const RegisterFormValidationSchema = yup.object().shape({
+    name: yup.string().required().min(3),
+    email: yup.string().required().email(),
+    password: yup.string().required().min(8)
+});
+
+const RegisterForm = withFormik<RegisterFormProps, RegisterFormValuesInterface>({
+    mapPropsToValues: props => ({
+        name: "",
+        email: '',
+        password: ''
+    }),
+    validationSchema: RegisterFormValidationSchema,
     handleSubmit: (values) => {
         console.log(values);
     }
