@@ -3,8 +3,10 @@ import Particles from '../../app/components/Particles/Particles';
 import { Fragment } from "react";
 import { NextPage } from "next";
 import LoginForm from '../../app/forms/auth/loginForm';
+import { useCookies } from "react-cookie";
 
 const Login: NextPage = () => {
+    const [cookies, setCookie] = useCookies(['shopy-token']);
 
     return (
         <Fragment>
@@ -13,7 +15,7 @@ const Login: NextPage = () => {
                 <section className={classes.content}>
                     <h2>login page</h2>
                     <section className={classes.inputs}>
-                        <LoginForm />
+                        <LoginForm setCookie={setCookie} />
                     </section>
                 </section>
             </div>
