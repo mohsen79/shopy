@@ -6,8 +6,9 @@ const InnerRegisterForm = (props: FormikProps<RegisterFormValuesInterface>) => {
     return (
         <Form action="">
             <Input name="name" type="text" label="name" />
-            <Input name="email" type="email" label="email" />
-            <Input name="password" type="password" label="password" />
+            <Input name="phone" label="phone" />
+            {/* <Input name="email" type="email" label="email" /> */}
+            {/* <Input name="password" type="password" label="password" /> */}
             <button type="submit">register</button>
         </Form>
     );

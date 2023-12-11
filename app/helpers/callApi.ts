@@ -3,7 +3,7 @@ import ValidationError from "../exceptions/ValidationError";
 
 const callApi = () => {
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:3001/api'
+        baseURL: 'http://localhost:3000/api'
     });
 
     axiosInstance.interceptors.request.use(
@@ -18,6 +18,7 @@ const callApi = () => {
             return res
         },
         err => {
+            console.log(err);
             const res = err?.response;
             if (res) {
                 if (res.status === 422) {

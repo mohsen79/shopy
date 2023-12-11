@@ -3,10 +3,15 @@ import Particles from '../../app/components/Particles/Particles';
 import { Fragment } from "react";
 import { NextPage } from "next";
 import LoginForm from '../../app/forms/auth/loginForm';
-import { useCookies } from "react-cookie";
+import { useAppDispatch } from "@/app/hooks";
+import { updatePhoneVerifyToken } from "@/app/store/auth";
 
 const Login: NextPage = () => {
-    const [cookies, setCookie] = useCookies(['shopy-token']);
+    const dispatch = useAppDispatch();
+
+    const setPhoneVerifyToken = (token: string) => {
+        dispatch(updatePhoneVerifyToken(token));
+    }
 
     return (
         <Fragment>
@@ -15,7 +20,7 @@ const Login: NextPage = () => {
                 <section className={classes.content}>
                     <h2>login page</h2>
                     <section className={classes.inputs}>
-                        <LoginForm setCookie={setCookie} />
+                        <LoginForm setToken={setPhoneVerifyToken} />
                     </section>
                 </section>
             </div>
