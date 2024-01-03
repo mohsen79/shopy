@@ -1,6 +1,7 @@
 import InnerVerifyCode from "@/app/components/auth/innerVerifyCode";
 import { VerifyCodeValuesInterface } from "@/app/contracts/auth";
 import ValidationError from "@/app/exceptions/ValidationError";
+import { stroeLoginCookie } from "@/app/helpers/auth";
 import callApi from "@/app/helpers/callApi";
 import { withFormik } from "formik";
 import Router from "next/router";
@@ -26,6 +27,7 @@ const VerifyCode = withFormik<VerifyCodeProps, VerifyCodeValuesInterface>({
         try {
             if (res.status === 200) {
                 Router.push('/');
+                stroeLoginCookie(res.data?.user?.token);
                 props.clearToken();
             }
             console.log(res);

@@ -81,7 +81,7 @@ router.post('/login/verify-phone', validate(loginStepTwoSchema)  , async (req, r
         let user = await userRepo.findBy('phone' , phoneVerify.phone);
 
         // * CREATE JWT TOKEN
-        const tokenJWT = createToken({ user_id: user.Id, name: user.name, phone })
+        const tokenJWT = createToken({ user_id: user.id, name: user.name, phone : user.phone })
         user.token = tokenJWT;
         await userRepo.update(user.id , { token : tokenJWT });
 
