@@ -1,12 +1,12 @@
 import UserPanelLayout from "@/app/components/userPanelLayout";
 import { NextPageWithLayout } from "../_app";
-import { useEffect, useState } from "react";
+import UserInfo from "../../app/components/panel/UserInfo";
 
 const Panel: NextPageWithLayout = () => {
 
     return (
         <div>
-            <h1>dashboard</h1>
+            <UserInfo />
         </div>
     )
 }

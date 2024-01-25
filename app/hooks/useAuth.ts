@@ -6,18 +6,14 @@ const cookie = new Cookies();
 
 const useAuth = () => {
     const { data, error } = useSWR('user_me', () => {
-        return callApi().get('/user/', {
+        return callApi().get('/user', {
             headers: {
-                Authorization: cookie.get('shopy')
-                // replace new back end source
-                // check for login and setting cookie
-                // continue video from minute 6
+                authorization: cookie.get('shopy')
             }
         });
     });
 
-    console.log(data, error);
-    return { user: null }
+    return { user: data?.data?.user, error, loading: !data && !error }
 }
 
 export default useAuth;

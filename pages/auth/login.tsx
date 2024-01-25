@@ -1,12 +1,13 @@
 import classes from "./forms.module.scss";
 import Particles from '../../app/components/Particles/Particles';
 import { Fragment } from "react";
-import { NextPage } from "next";
 import LoginForm from '../../app/forms/auth/loginForm';
 import { useAppDispatch } from "@/app/hooks";
 import { updatePhoneVerifyToken } from "@/app/store/auth";
+import { NextPageWithLayout } from "../_app";
+import GuestLayout from "@/app/components/guestLayout";
 
-const Login: NextPage = () => {
+const Login: NextPageWithLayout = () => {
     const dispatch = useAppDispatch();
 
     const setPhoneVerifyToken = (token: string) => {
@@ -27,5 +28,7 @@ const Login: NextPage = () => {
         </Fragment>
     );
 }
+
+Login.getLayout = page => <GuestLayout>{page}</GuestLayout>
 
 export default Login

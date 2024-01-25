@@ -26,7 +26,7 @@ const VerifyCode = withFormik<VerifyCodeProps, VerifyCodeValuesInterface>({
         const res = await callApi().post('/auth/login/verify-phone', values);
         try {
             if (res.status === 200) {
-                Router.push('/');
+                Router.push('/panel');
                 stroeLoginCookie(res.data?.user?.token);
                 props.clearToken();
             }

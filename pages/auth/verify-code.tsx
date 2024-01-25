@@ -1,13 +1,14 @@
 import classes from "./forms.module.scss";
 import Particles from '../../app/components/Particles/Particles';
 import { Fragment, useEffect } from "react";
-import { NextPage } from "next";
 import VerifyCode from "@/app/forms/auth/verifyCode";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { selectPhoneVerifyToken, updatePhoneVerifyToken } from "@/app/store/auth";
 import Router from "next/router";
+import { NextPageWithLayout } from "../_app";
+import GuestLayout from "@/app/components/guestLayout";
 
-const Register: NextPage = () => {
+const Register: NextPageWithLayout = () => {
     const token = useAppSelector(selectPhoneVerifyToken);
     const dispatch = useAppDispatch();
 
@@ -39,5 +40,7 @@ const Register: NextPage = () => {
         </Fragment>
     );
 }
+
+Register.getLayout = page => <GuestLayout>{page}</GuestLayout>
 
 export default Register
