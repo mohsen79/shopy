@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const db = require('../../app/db/createDatabase');
 
 const auth = (req, res, next) => {
-    const token = req.headers?.authorization;
+    const token = req.headers?.authorization || req.cookies.shopy_token;
 
     if(! token ) {
         return res.status(403).json({ status: 'fail' , message : 'unauthorized'})

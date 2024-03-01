@@ -13,7 +13,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
-  origin: 'http://localhost:3001'
+  origin: 'http://localhost:3001',
+  credentials: true
 }))
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));

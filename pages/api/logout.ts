@@ -5,21 +5,15 @@ type Data = {
   status: string
 }
 
-interface ExtendedNextApiRequest extends NextApiRequest {
-  body: {
-    token: string
-  }
-}
-
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.setHeader("Set-Cookie", cookie.serialize('shopy_token', req.body?.token, {
+  res.setHeader("Set-Cookie", cookie.serialize('shopy_token', "", {
     httpOnly: true,
     // secure: true,
     // domain:"",
-    maxAge: 60 * 60 * 24,
+    maxAge: 0,
     sameSite: 'lax',
     path: '/'
   }))
